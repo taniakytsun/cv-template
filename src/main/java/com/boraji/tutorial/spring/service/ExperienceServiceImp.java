@@ -7,14 +7,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-@Component("exper")
+@Component("experienceService")
 @Service
 @Transactional(readOnly = true)
 public class ExperienceServiceImp implements BookService<Experience>{
 
-    @Autowired
+    @Resource(name = "experienceDao")
     private BookDao<Experience> bookDao;
 
 

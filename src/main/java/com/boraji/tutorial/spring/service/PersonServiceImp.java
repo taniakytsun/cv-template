@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.boraji.tutorial.spring.dao.BookDao;
 import com.boraji.tutorial.spring.model.Person;
 
-@Component("pers")
+import javax.annotation.Resource;
+
+@Component("personService")
 @Service
 @Transactional(readOnly = true)
 public class PersonServiceImp  implements BookService<Person>{
 
-   @Autowired
+   @Resource(name = "personDao")
    private BookDao<Person> bookDao;
 
    @Transactional

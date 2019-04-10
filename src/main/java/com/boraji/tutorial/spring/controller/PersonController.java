@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 @RestController
 public class PersonController {
 
-   @Resource(name = "pers")
+   @Resource(name = "personService")
    private BookService<Person> bookService;
 
    @PostMapping("/person")

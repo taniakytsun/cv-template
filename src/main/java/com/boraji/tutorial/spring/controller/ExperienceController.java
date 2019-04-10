@@ -2,7 +2,6 @@ package com.boraji.tutorial.spring.controller;
 
 import com.boraji.tutorial.spring.model.Experience;
 import com.boraji.tutorial.spring.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,7 @@ import java.util.List;
 @RestController
 public class ExperienceController {
 
-    @Resource(name = "exper")
+    @Resource(name = "experienceService")
     private BookService<Experience> bookService;
 
     @PostMapping("/experience")
@@ -28,21 +27,18 @@ public class ExperienceController {
         return ResponseEntity.ok().body(experience);
     }
 
-    /*---get all books---*/
     @GetMapping("/experience")
     public ResponseEntity<List<Experience>> list() {
         List<Experience> experiences = bookService.list();
         return ResponseEntity.ok().body(experiences);
     }
 
-    /*---Update a person by id---*/
     @PutMapping("/experience/{id}")
     public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Experience experience) {
         bookService.update(id, experience);
         return ResponseEntity.ok().body("Experience has been updated successfully.");
     }
 
-    /*---Delete a book by id---*/
     @DeleteMapping("/experience/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") long id) {
         bookService.delete(id);
